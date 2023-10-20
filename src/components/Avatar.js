@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
 
 function stringToColor(string) {
   let hash = 0;
@@ -32,7 +33,10 @@ function stringAvatar(name) {
 export default function BackgroundLetterAvatars() {
   return (
     <Stack direction="row" spacing={2} sx={{width: 38, height: 38,ml:11,mt:2}}>
-      <Avatar {...stringAvatar('Sanofer Bavasa')} />
+       <Tooltip title="Accounts">
+       <Avatar {...stringAvatar('Sanofer Bavasa')} />
+       </Tooltip>
+      
     </Stack>
   );
 }

@@ -4,7 +4,6 @@ import Popper from '@mui/material/Popper';
 import Avatar from "./Avatar";
 import { Paper, Typography } from '@mui/material';
 
-
 export default function SimplePopper() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -23,8 +22,16 @@ export default function SimplePopper() {
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <Paper sx={{ p: 2, bgcolor: 'background.paper',mb:2,ml:5,borderRadius:4,height:70,width:250,border:'none' }}>
          
-          <Typography>Add an existing account</Typography>
-          <Typography sx={{mt:2}}>Log out @Sanofer</Typography>
+          <Typography sx={{fontWeight:'bold','&:hover': {
+          backgroundColor: '#f2f2f2',
+          height:20,
+          p:1
+        },}}>Add an existing account</Typography>
+          <Typography sx={{mt:2,fontWeight:'bold','&:hover': {
+          backgroundColor: '#f2f2f2',
+          height:20,
+          p:1
+        },}}>Log out @Sanofer</Typography>
          
         </Paper>
       </Popper>

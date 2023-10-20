@@ -9,9 +9,9 @@ import Notification from './components/Notification';
 import Message from './components/Message';
 import Lists from './components/Lists';
 import Communities from './components/Communities';
-import Premium from './components/Premium';
+// import Premium from './components/Premium';
 import Profile from './components/Profile';
-import More from './components/More';
+// import More from './components/More';
 // import Post from './components/Post';
 // import Accounts from './components/Accounts';
 
@@ -28,9 +28,9 @@ function App() {
         <Route path="/message" element={<Message/>}/>
         <Route path="/lists" element={<Lists/>}/>
         <Route path="/communities" element={<Communities/>}/>
-        <Route path="/premium" element={<Premium/>}/>
+        {/* <Route path="/premium" element={<Premium/>}/> */}
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/more" element={<More/>}/>
+        {/* <Route path="/more" element={<More/>}/> */}
         {/* <Route path="/post" element={<Post/>}/> */}
         {/* <Route path="/accounts" element={<Accounts/>}/> */}
       </Routes>
