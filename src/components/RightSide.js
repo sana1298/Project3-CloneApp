@@ -12,7 +12,8 @@ const RightSide = () => {
         width:350,
         height:590,
         // backgroundColor: 'lightgreen',
-        ml:107
+        ml:107,
+        // position:'fixed'
      }}
     >
         <Box sx={{p:2}}>
