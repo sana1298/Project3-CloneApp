@@ -1,5 +1,6 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
+import SubscribeButton from './SubscribeButton'
 
 const Subscribe = () => {
   return (
@@ -17,7 +18,8 @@ const Subscribe = () => {
     >
         <Typography variant='h5'>Subscribe to Premium</Typography>
         <Typography variant='p'>Subscribe to unlock new features and if eligible,receive a share of ads revenue.</Typography>
-        <Button variant='contained' sx={{borderRadius:8,mt:1,backgroundColor:'black'}}>Subscribe</Button>
+        {/* <Button variant='contained' sx={{borderRadius:8,mt:1,backgroundColor:'black'}}>Subscribe</Button> */}
+        <SubscribeButton/>
     </Box>
     </>
   )

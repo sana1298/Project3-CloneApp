@@ -10,14 +10,18 @@ const RightSide = () => {
     <Paper
     sx={{
         width:350,
-        height:590,
+        height: 600,
+        // height:590,
         // backgroundColor: 'lightgreen',
+        overflowY: "scroll",
+        overflowX: "hidden",
         ml:107,
-        // position:'fixed'
+        position:'fixed'
      }}
     >
         <Box sx={{p:2}}>
-        <SearchBar sx={{width:100}} />
+          <Box sx={{width:360,ml:-3}}><SearchBar /></Box>
+       
         <Subscribe />
         <Happening />
         </Box>

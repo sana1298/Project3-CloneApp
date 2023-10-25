@@ -12,6 +12,46 @@ const [liked, setLiked] = useState(false);
 const deletePost = (index) => {
   setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
 };
+const defalutPost={
+  userId:0,
+  posts:[{
+    avatar:'',
+    content: '',
+    img:'',
+    like:""
+
+  },
+  {
+    avatar:'',
+    content: '',
+    img:'',
+    like:""
+
+  },
+  {
+    avatar:'',
+    content: '',
+    img:'',
+    like:""
+
+  },
+  {
+    avatar:'',
+    content: '',
+    img:'',
+    like:""
+
+  },
+  {
+    avatar:'',
+    content: '',
+    img:'',
+    like:""
+
+  },
+],
+ 
+}
   
   return (
     <UserContext.Provider
@@ -25,6 +65,7 @@ const deletePost = (index) => {
       deletePost,
       liked,
       setLiked,
+      defalutPost,
     }}
      >{children}</UserContext.Provider>
   );

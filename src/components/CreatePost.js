@@ -13,6 +13,7 @@ const CreatePost = () => {
   const { posts, selectedImage, deletePost,liked,setLiked } = useForm(UserContext);
   const handleDeletePost = (index) => {
     deletePost(index);
+    console.log("Delete post",index)
   };
 
   const handleLikeClick = () => {
@@ -22,17 +23,18 @@ const CreatePost = () => {
   return (
     <Box>
       {posts.map((post, index) => (
-        <Paper>
+        <Paper sx={{mt:1}}>
           <Box sx={{ display: "flex" }}>
             <Avatar />
             {/* <MoreHorizOutlinedIcon sx={{ ml: 60, mt: 3 }} /> */}
-
+          <Typography key={index}>{post}</Typography>
+             
             <Tooltip title="Delete">
-              <CloseOutlinedIcon sx={{ ml: 60, mt: 3 }}  onClick={() => handleDeletePost(index)} />
+              <CloseOutlinedIcon sx={{ ml: 58, mt: 3 }}  onClick={() => handleDeletePost(index)} />
             </Tooltip>
           </Box>
 
-          <Typography key={index}>{post}</Typography>
+          {/* <Typography key={index}>{post}</Typography> */}
           <CardMedia
             component="img"
             sx={{ width: 35, height: 35, ml: 11, mt: 2 }}
@@ -40,7 +42,7 @@ const CreatePost = () => {
             alt="post"
           />
           <Tooltip title={liked ? "Unlike" : "Like"} onClick={handleLikeClick}>
-            {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+            {liked ? <FavoriteOutlinedIcon sx={{color:'red'}} /> : <FavoriteBorderOutlinedIcon />}
           </Tooltip>
         </Paper>
       ))}

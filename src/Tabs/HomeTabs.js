@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Avatar from "./Avatar";
+import Avatar from "../components/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "@mui/material/Link";
 import CollectionsOutlinedIcon from "@mui/icons-material/CollectionsOutlined";
@@ -18,7 +18,7 @@ import { Button, TextField } from "@mui/material";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 import { styled } from "@mui/material/styles";
-import CreatePost from "./CreatePost";
+import CreatePost from "../components/CreatePost";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -103,11 +103,12 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <Box>
-          <Box sx={{ display: "flex" }}>
-            <Avatar />
+          <Box sx={{ display: "flex"}}>
+            <Box sx={{ml:-10,mb:2}}><Avatar /></Box>
+            
             <TextField
               placeholder="What is happening?!"
-              sx={{ border: "none" }}
+              sx={{ border: "none",ml:2,textDecoration:'none' }}
               value={postContent} // Bind the value to the state
               onChange={handleTextFieldChange}
             ></TextField>
@@ -204,10 +205,10 @@ export default function BasicTabs() {
                 </Tooltip>
               </IconButton>
             </Box>
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 2 }}>
               <Button
                 variant="contained"
-                sx={{ borderRadius: 5, ml: 35 }}
+                sx={{ borderRadius: 5, ml: 30 }}
                 onClick={handlePost}
               >
                 Post
@@ -323,10 +324,10 @@ export default function BasicTabs() {
                 </Tooltip>
               </IconButton>
             </Box>
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 2, }}>
               <Button
                 variant="contained"
-                sx={{ borderRadius: 5, ml: 35 }}
+                sx={{ borderRadius: 5, ml: 30 }}
                 onClick={handlePost}
               >
                 Post

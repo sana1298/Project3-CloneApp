@@ -46,7 +46,7 @@ const SearchBar = () => {
   return (
     <>
     <Search
-     sx={{borderRadius:4,}}
+     sx={{borderRadius:4}}
      >
             <SearchIconWrapper>
               <SearchIcon />
