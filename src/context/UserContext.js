@@ -1,55 +1,95 @@
 import React, { createContext, useContext, useState } from 'react';
+import Image1 from '../images/image1.jpg'
+import Image2 from '../images/image2.avif'
+import Image3 from '../images/image3.webp'
+import Pet1 from '../images/pet1.jpg'
+import Pet2 from '../images/pet2.webp'
+import Pet3 from '../images/pet3.jpg'
+import Travel1 from '../images/travel1.jpg'
+import Travel2 from '../images/travel2.webp'
+import Travel3 from '../images/travel3.jpg'
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
 //   const[toggle,setToggle]=useState(false);
+const [loggedIn, setLoggedIn] = useState(
+  localStorage.getItem("LoggedIn") === "true"
+);
 
+const [userName, setUserName] = useState("");
 const [postContent, setPostContent] = useState(''); 
-const [posts, setPosts] = React.useState([]);
+const [posts, setPosts] = useState([]);
 const [selectedImage, setSelectedImage] = React.useState(null);
 const [liked, setLiked] = useState(false);
 const deletePost = (index) => {
   setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
 };
 const defalutPost={
-  userId:0,
   posts:[{
-    avatar:'',
+    userName:'Sanofer Bavasa',
     content: '',
-    img:'',
+    img:{Image1},
     like:""
 
   },
   {
-    avatar:'',
+    userName:'Zaara Maryam',
     content: '',
-    img:'',
+    img:{Pet1},
     like:""
 
   },
   {
-    avatar:'',
+    userName:'Ava Lane ',
     content: '',
-    img:'',
+    img:{Travel1},
     like:""
 
   },
   {
-    avatar:'',
+    userName:'Sanofer Bavasa',
     content: '',
-    img:'',
+    img:{Image2},
     like:""
 
   },
   {
-    avatar:'',
+    userName:'Zaara Maryam',
     content: '',
-    img:'',
+    img:{Pet2},
     like:""
 
   },
-],
+{
+  userName:'Ava Lane',
+  content: '',
+  img:{Travel2},
+  like:""
+
+},
+{
+  userName:'Sanofer Bavasa',
+  content: '',
+  img:{Image3},
+  like:""
+
+},
+{
+  userName:'Zaara Maryam',
+  content: '',
+  img:{Pet3},
+  like:""
+
+},
+{
+  userName:'Ava Lane',
+  content: '',
+  img:{Travel3},
+  like:""
+
+},
+]
  
 }
   
@@ -66,6 +106,10 @@ const defalutPost={
       liked,
       setLiked,
       defalutPost,
+      loggedIn,
+      setLoggedIn,
+      userName,  
+      setUserName, 
     }}
      >{children}</UserContext.Provider>
   );

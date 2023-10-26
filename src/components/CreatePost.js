@@ -30,7 +30,7 @@ const CreatePost = () => {
           <Typography key={index}>{post}</Typography>
              
             <Tooltip title="Delete">
-              <CloseOutlinedIcon sx={{ ml: 58, mt: 3 }}  onClick={() => handleDeletePost(index)} />
+              <CloseOutlinedIcon sx={{ ml: 50, mt: 3 }}  onClick={() => handleDeletePost(index)} />
             </Tooltip>
           </Box>
 

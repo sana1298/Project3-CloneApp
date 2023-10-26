@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Box, TextField, Button, Typography, CardMedia } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import PasswordInput from "../FieldMessage/PasswordField";
 import EmailField from "../FieldMessage/EmailField";
+import TwitterLogo from "../images/twitterlogo.png";
+import { useForm } from "../context/UserContext";
+import UserContext from "../context/UserContext";
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -27,14 +31,15 @@ const alertMsg = {
     key: "empty",
   },
   success: {
-    msg: "Logged in successfully!",
+    msg: "Registered successfully!",
     severity: "success",
     key: "success",
   },
 };
 
 const RegisterForm = () => {
-  const [userName, setUserName] = useState("");
+  const { userName, setUserName } =useForm(UserContext);
+  // const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [pswd, setPswd] = useState("");
   const [nameError, setNameError] = useState(false);
@@ -85,21 +90,40 @@ const RegisterForm = () => {
     }
     setErrorType("");
   };
+  const handleLogin=()=>{
+    navigate("/");
+  }
   return (
     <>
+    <Box sx={{ display: "flex", justifyContent: "space-around", height: 597 }}>
+    <Box>
+          <CardMedia
+            component="img"
+            sx={{
+              width: 250,
+              height: 250,
+              mt: 20,
+              ml: 10,
+            }}
+            image={TwitterLogo}
+            alt="logo"
+          />
+        </Box>
       <Box
         sx={{
-          width: 300,
+          display: "flex",
+          flexDirection: "column",
+          // width: 300,
           height: 400,
-          backgroundColor: "#b7c6e8",
+          // backgroundColor: "#b7c6e8",
           mt: 10,
-          mx: 60,
-          p: 2,
+          // mx: 60,
+          // p: 2,
         }}
       >
-        <Typography variant="h5">Register</Typography>
+        <Typography variant="h4" sx={{fontWeight:'bold'}}>Sign Up</Typography>
         <TextField
-          sx={{ my: 1, width: 260 }}
+          sx={{ my: 1, width: 350 }}
           id="outlined-basic"
           label="Name"
           variant="outlined"
@@ -111,7 +135,7 @@ const RegisterForm = () => {
           error={nameError}
         />
         <EmailField
-          sx={{ my: 1, width: 260 }}
+          sx={{ my: 1, width: 350 }}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onBlur={(e, error) =>
@@ -119,23 +143,54 @@ const RegisterForm = () => {
           }
         ></EmailField>
         <PasswordInput
-          sx={{ my: 1 }}
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
           onBlur={(e, error) => setError((state) => ({ ...state, pwd: error }))}
+          sx={{ width: 350, my: 2 }}
+
         />
-        <Button sx={{ my: 1 }} variant="contained" onClick={handleClick}>
-          Register
-        </Button>
+        {/* <Button sx={{ my: 1,fontWeight: 'bold' }} variant="contained" onClick={handleClick}>
+          Sign up
+        </Button> */}
+        <Button
+            sx={{
+              mt: 1,
+              width: 350,
+              borderRadius: 4,
+              height: 60,
+              color: "primary",
+              fontWeight: "bold",
+            }}
+            variant="contained"
+            onClick={handleClick}
+          >
+            Sign up
+          </Button>
         <MyAlert
           open={errorType}
           onClose={handleClose}
           msg={alertMsg[errorType]?.msg}
           severity={alertMsg[errorType]?.severity}
         />
-        <Typography variant="h6">
-          Already have an account?<Link to="/">Login</Link>
-        </Typography>
+        <Typography variant="h6"sx={{fontWeight:'bold',mt:2}}>Already have an account?</Typography>
+        <Button
+            sx={{
+              mt: 1,
+              width: 350,
+              borderRadius: 4,
+              height: 60,
+              border: "1px solid",
+              color: "primary",
+              fontWeight: "bold",
+            }}
+            variant="outlined"
+            onClick={handleLogin}
+
+          >
+            Sign in
+            {/* <Link to="/">Login</Link> */}
+          </Button>
+      </Box>
       </Box>
     </>
   );

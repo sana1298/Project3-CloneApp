@@ -28,8 +28,8 @@ export default function SimplePopper() {
           </Box>
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper',borderRadius:4,}}>
-          <Typography variant='p' sx={{fontWeight: 'bold'}}>🙁  Not interested in this</Typography><br/>
-          <Typography variant='p' sx={{fontWeight: 'bold',mt:4}}>🙁  This trend is harmful or spammy</Typography>
+          <Typography variant='p' sx={{fontWeight: 'bold',cursor:'pointer'}}>🙁  Not interested in this</Typography><br/>
+          <Typography variant='p' sx={{fontWeight: 'bold',mt:4,cursor:'pointer'}}>🙁 This trend is harmful or spammy</Typography>
         </Box>
       </Popper>
     </Box>

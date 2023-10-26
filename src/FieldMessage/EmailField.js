@@ -29,7 +29,7 @@ const EmailField = (props) => {
     variant="outlined" 
     error={error}>
         
-    <TextField sx={{ my: 1,width:260  }} id="outlined-basic" label='Email' variant="outlined" name="logEmail"
+    <TextField sx={{ my: 1,  }} id="outlined-basic" label='Email' variant="outlined" name="logEmail"
        error={error}
           {...props}
         onBlur={handleBlur}

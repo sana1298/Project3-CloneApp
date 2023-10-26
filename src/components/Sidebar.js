@@ -34,7 +34,7 @@ const Sidebar = () => {
           // p:1
         }}
       >
-        <Link to="/home">
+        <Link to="/layout">
           <CardMedia
             component="img"
             sx={{ width: 35, height: 35, ml: 11, mt: 2 }}
@@ -43,7 +43,7 @@ const Sidebar = () => {
           />
         </Link>
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/home">
+          <Link to="/layout">
             <Tooltip title="Home">
               <HomeIcon
                 sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
@@ -52,61 +52,61 @@ const Sidebar = () => {
           </Link>
         </IconButton>
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/search">
+          <Link to="search">
             <Tooltip title="Search">
               <SearchIcon
-                sx={{ width: 35, height: 35, mt: 2, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>
         </IconButton>
 
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/notification">
+          <Link to="notification">
             <Tooltip title="Notification">
               <NotificationsNoneIcon
-                sx={{ width: 35, height: 35, mt: 2, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>
         </IconButton>
 
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/message">
+          <Link to="message">
             <Tooltip title="Message">
               <MailOutlineIcon
-                sx={{ width: 35, height: 35, mt: 2, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>
         </IconButton>
 
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/lists">
+          <Link to="lists">
             <Tooltip title="Lists">
               <ListAltIcon
-                sx={{ width: 35, height: 35, mt: 2, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>
         </IconButton>
 
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
-          <Link to="/communities">
+          <Link to="communities">
             <Tooltip title="Communities">
               <PeopleOutlineIcon
-                sx={{ width: 35, height: 35, mt: 2, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 2, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>
         </IconButton>
-        
+
         <Premium />
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 1.5 }}>
-          <Link to="/profile">
+          <Link to="profile">
             <Tooltip title="Profile">
               <PersonOutlineIcon
-                sx={{ width: 35, height: 35, mt: 1.5, color: "black",mb: 1.5 }}
+                sx={{ width: 35, height: 35, mt: 1.5, color: "black", mb: 1.5 }}
               />
             </Tooltip>
           </Link>

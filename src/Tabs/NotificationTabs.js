@@ -51,9 +51,9 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="All" {...a11yProps(0)} />
-          <Tab label="Verified" {...a11yProps(1)} />
-          <Tab label="Mentions" {...a11yProps(2)} />
+          <Tab label="All" {...a11yProps(0)} sx={{ml:12}} />
+          <Tab label="Verified" {...a11yProps(1)} sx={{ml:12}}/>
+          <Tab label="Mentions" {...a11yProps(2)} sx={{ml:12}}/>
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -62,7 +62,7 @@ export default function BasicTabs() {
       <CustomTabPanel value={value} index={1}>
         <Box>
         <Typography variant='h3'>Nothing to see here-yet</Typography>
-        <Typography variant='p'>Likes,mentions,reports,and a whole lot more-when it comes from a verifed account,you'll find it here.<Link href="https://help.twitter.com/en/managing-your-account/about-x-verified-accounts" sx={{color:'black'}}>Learn more</Link></Typography>
+        <Typography variant='p'>Likes,mentions,reports,and a whole lot more-when it comes from a verifed account,you'll find it here.<Link href="https://help.twitter.com/en/managing-your-account/about-x-verified-accounts" sx={{color:'black',textDecoration:'none',fontWeight:'bold'}}>Learn more</Link></Typography>
         </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2} >

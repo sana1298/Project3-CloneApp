@@ -55,8 +55,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const { postContent, setPostContent, posts, setPosts } =
-    useForm(UserContext);
+  const { postContent, setPostContent, posts, setPosts } =useForm(UserContext);
   
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
@@ -96,19 +95,19 @@ export default function BasicTabs() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label=" For You" {...a11yProps(0)} />
-          <Tab label="Following" {...a11yProps(1)} />
+          <Tab label=" For You" {...a11yProps(0)} sx={{ml:20}} />
+          <Tab label="Following" {...a11yProps(1)} sx={{ml:20}} />
           {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <Box>
           <Box sx={{ display: "flex"}}>
-            <Box sx={{ml:-10,mb:2}}><Avatar /></Box>
+            <Box sx={{ml:-10,mt:-1}}><Avatar /></Box>
             
             <TextField
               placeholder="What is happening?!"
-              sx={{ border: "none",ml:2,textDecoration:'none' }}
+              sx={{ border: "none",ml:2,width:500 }}
               value={postContent} // Bind the value to the state
               onChange={handleTextFieldChange}
             ></TextField>

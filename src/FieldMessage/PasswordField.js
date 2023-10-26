@@ -38,7 +38,7 @@ function PasswordInput(props) {
 
   return (
     <FormControl variant="outlined" error={error}>
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <InputLabel htmlFor="outlined-adornment-password" sx={{mt:2}}>Password</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
         type={showPassword ? "text" : "password"}

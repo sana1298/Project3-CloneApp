@@ -2,10 +2,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Popper from '@mui/material/Popper';
 import Avatar from "./Avatar";
-import { Paper, Typography } from '@mui/material';
+import {  Paper, Typography } from '@mui/material';
+import { useForm } from "../context/UserContext";
+import UserContext from "../context/UserContext";
+// import { Navigate } from "react-router-dom";
 
 export default function SimplePopper() {
+  const {  setLoggedIn } =useForm(UserContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -13,6 +18,13 @@ export default function SimplePopper() {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
+  const handleLogout = () => {
+    localStorage.setItem("LoggedIn", false);
+    setLoggedIn(false);
+  };
+  // if (!loggedIn) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <Box>
@@ -31,7 +43,14 @@ export default function SimplePopper() {
           backgroundColor: '#f2f2f2',
           height:20,
           p:1
-        },}}>Log out @Sanofer</Typography>
+        },}}><Box
+        sx={{ marginleft: 5 }}
+        variant="contained"
+        onClick={handleLogout}
+      >
+       Log out @Sanofer
+       </Box>
+      </Typography>
          
         </Paper>
       </Popper>

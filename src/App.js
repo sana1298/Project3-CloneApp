@@ -8,10 +8,10 @@ import Message from "./components/Message";
 import Lists from "./components/Lists";
 import Communities from "./components/Communities";
 import Profile from "./components/Profile";
-import Layout from "./components/Layout";
-// import LoginForm from "./components/LoginForm";
-// import RegisterForm from "./components/RegisterForm";
-// import Protect from "./components/Protect";
+// import Layout from "./components/Layout";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
+import Protect from "./components/Protect";
 
 function App() {
   return (
@@ -19,17 +19,12 @@ function App() {
       <Box>
         <Router>
           <Routes>
-            {/* <Route path="/" element={<LoginForm />} />
+            <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<RegisterForm />} />
-            <Route path="/layout" element={<Protect />}> */}
-              <Route
-                // index
-                path="/"
-                element={<Layout />}
-              >
+            <Route path="/layout" element={<Protect />}>
               {/* </Route> */}
 
-              <Route path="home" element={<Home />} />
+              <Route index element={<Home />} />
               <Route path="search" element={<Search />} />
               <Route path="notification" element={<Notification />} />
               <Route path="message" element={<Message />} />

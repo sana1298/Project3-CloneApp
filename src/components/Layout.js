@@ -2,22 +2,31 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import RightSide from "./RightSide";
 import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";;
+import { Box } from "@mui/material";
+import { Navigate } from "react-router-dom";
+import { useForm } from "../context/UserContext";
+import UserContext from "../context/UserContext";
+
 
 
 function Layout() {
+  const { loggedIn} =useForm(UserContext);
+
+  if (!loggedIn) {
+    return <Navigate to="/" />;
+  }
   return (
-    <Box sx={{position:'relative'}}> 
-      {/* <Link to="/home"> */}
+    <>
+    {loggedIn?(<Box sx={{position:'relative'}}>
       <Sidebar />
       <RightSide />
       <Box>
         <Outlet/>
       </Box>
-      
-      
-      {/* </Link> */}
-    </Box>
+     
+    </Box>):('')}
+    
+    </>
   );
 }
 
