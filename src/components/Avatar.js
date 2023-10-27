@@ -26,7 +26,7 @@ function stringAvatar(name) {
     sx: {
       bgcolor: stringToColor(name),
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    children: `${name.split(' ')[0][0].toUpperCase()}${name.split(' ')[1][0].toUpperCase()}`,
   };
 }
 
@@ -34,7 +34,7 @@ export default function BackgroundLetterAvatars() {
   return (
     <Stack direction="row" spacing={2} sx={{width: 38, height: 38,ml:11,mt:2}}>
        <Tooltip title="Accounts">
-       <Avatar {...stringAvatar('Sanofer Bavasa')} />
+       <Avatar {...stringAvatar('sanofer bavasa')} />
        </Tooltip>
       
     </Stack>

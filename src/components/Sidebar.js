@@ -39,7 +39,7 @@ const Sidebar = () => {
             component="img"
             sx={{ width: 35, height: 35, ml: 11, mt: 2 }}
             image={TwitterLogo}
-            alt="anime"
+            alt="TwitterLogo"
           />
         </Link>
         <IconButton sx={{ width: 39, height: 39, ml: 11, mt: 2 }}>
