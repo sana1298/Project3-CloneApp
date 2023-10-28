@@ -3,21 +3,27 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import ProfileTabs from "../Tabs/ProfileTabs";
 
 const Profile = () => {
   return (
     <>
-      <Box sx={{ width: 660, ml: 20 }}>
-        <Typography variant="" sx={{ backgroundColor: "lightblue" }}>
-          Profile
-        </Typography>
+      <Box sx={{ width: 660, ml: 20,position:'relative' }}>
+        <Box
+          sx={{ position: "fixed", bgcolor: "green", zIndex: 1, height: 60,width: 660, }}
+        >
+          <Typography variant="" sx={{ backgroundColor: "lightblue" }}>
+            Profile
+          </Typography>
+        </Box>
+
         <Box>
           <Box
             sx={{
               bgcolor: "grey",
               width: 660,
-              height: 200,
-              position: "relative",
+              height: 230,
+              // position: "relative",
             }}
           ></Box>
           <Box
@@ -43,6 +49,9 @@ const Profile = () => {
           >
             Joined November 2022
           </Typography>
+        </Box>
+        <Box>
+          <ProfileTabs />
         </Box>
       </Box>
     </>
@@ -77,7 +86,9 @@ function stringAvatar(name) {
       height: 110,
       // position: 'absolute',
     },
-    children: `${name.split(" ")[0][0].toUpperCase()}${name.split(" ")[1][0].toUpperCase()}`,
+    children: `${name.split(" ")[0][0].toUpperCase()}${name
+      .split(" ")[1][0]
+      .toUpperCase()}`,
   };
 }
 

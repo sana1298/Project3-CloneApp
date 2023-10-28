@@ -10,7 +10,7 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 // import Tooltip from "@mui/material/Tooltip";
 
 const CreatePost = () => {
-  const { posts, selectedImage, deletePost,liked,setLiked } = useForm(UserContext);
+  const { posts, selectedImage, deletePost,liked,setLiked,newDetails } = useForm(UserContext);
   const handleDeletePost = (index) => {
     deletePost(index);
     console.log("Delete post",index)
@@ -26,6 +26,7 @@ const CreatePost = () => {
         <Paper sx={{mt:1}}>
           <Box sx={{ display: "flex" }}>
             <Avatar />
+            <Typography variant="h5" sx={{fontWeight: "bold"}}>{newDetails.userName}</Typography>
             {/* <MoreHorizOutlinedIcon sx={{ ml: 60, mt: 3 }} /> */}
           <Typography key={index}>{post}</Typography>
              

@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
+import PostDisplay from '../components/PostDisplay';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,15 +54,34 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Posts" {...a11yProps(0)} />
-          <Tab label="Replies" {...a11yProps(1)} />
-          <Tab label="Highlights" {...a11yProps(2)} />
-          <Tab label="Media" {...a11yProps(3)} />
-          <Tab label="Likes" {...a11yProps(4)} />
+          <Tab label="Posts" {...a11yProps(0)} sx={{ml:4}}/>
+          <Tab label="Replies" {...a11yProps(1)} sx={{ml:4}} />
+          <Tab label="Highlights" {...a11yProps(2)} sx={{ml:4}} />
+          <Tab label="Media" {...a11yProps(3)} sx={{ml:4}}/>
+          <Tab label="Likes" {...a11yProps(4)} sx={{ml:4}} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+       <PostDisplay/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
+       <Typography>asdfgh</Typography><br/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two

@@ -1,13 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-// import Image1 from '../images/image1.jpg'
-// import Image2 from '../images/image2.avif'
-// import Image3 from '../images/image3.webp'
-// import Pet1 from '../images/pet1.jpg'
-// import Pet2 from '../images/pet2.webp'
-// import Pet3 from '../images/pet3.jpg'
-// import Travel1 from '../images/travel1.jpg'
-// import Travel2 from '../images/travel2.webp'
-// import Travel3 from '../images/travel3.jpg'
 
 const UserContext = createContext();
 
@@ -22,22 +13,34 @@ const [postContent, setPostContent] = useState('');
 const [posts, setPosts] = useState([]);
 const [selectedImage, setSelectedImage] = React.useState(null);
 const [liked, setLiked] = useState(false);
+const [pswd, setPswd] = useState("");
+const [email, setEmail] = useState("");
+const[newDetails, setNewDetails] = useState()
+
+
 const deletePost = (index) => {
   setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
 };
+
+const data = JSON.parse(localStorage.getItem("data")) || [];
+// console.log(loginName,'55555555555')
+const logindetails = data.find((user) => {
+  return user.email === email && user.password === pswd;
+});
 const defalutPost={
   posts:[{
     userName:'Sanofer Bavasa',
     content: '',
     image:'https://images.pexels.com/photos/5264088/pexels-photo-5264088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    like:""
+    like:"",
+    email:'sanofer@gmail.com'
 
   },
   {
     userName:'Zaara Maryam',
     content: '',
     image:'https://wallpapers.com/images/featured/nature-2ygv7ssy2k0lxlzu.jpg',
-    like:""
+    email:"muthu@gmail.com"
 
   },
   {
@@ -113,7 +116,14 @@ const defalutPost={
       loggedIn,
       setLoggedIn,
       userName,  
-      setUserName, 
+      setUserName,
+      pswd,
+      setPswd,
+      email,
+      setEmail,
+      logindetails,
+      newDetails,
+      setNewDetails,
     }}
      >{children}</UserContext.Provider>
   );

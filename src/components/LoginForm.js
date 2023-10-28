@@ -6,6 +6,8 @@ import MuiAlert from "@mui/material/Alert";
 import PasswordInput from "../FieldMessage/PasswordField";
 import EmailField from "../FieldMessage/EmailField";
 import TwitterLogo from "../images/twitterlogo.png";
+import { useForm } from "../context/UserContext";
+import UserContext from "../context/UserContext";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -30,10 +32,12 @@ const alertMsg = {
 };
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
+  const {email,setEmail,pswd,setPswd,logindetails,setNewDetails,userName  } =useForm(UserContext);
+
+  // const [email, setEmail] = useState("");
   const navigate = useNavigate();
   // const [success, setSuccess] = useState(false)
-  const [pswd, setPswd] = useState("");
+  // const [pswd, setPswd] = useState("");
   const [error, setError] = useState({
     pwd: false,
     mail: false,
@@ -42,15 +46,19 @@ const LoginForm = () => {
   const [errorType, setErrorType] = useState("");
 
   const handleLogin = () => {
-    const data = JSON.parse(localStorage.getItem("data")) || [];
-    console.log(data, "rtyuiop");
-    console.log(email, pswd, "emai,password");
-    const logindetails = data.find((user) => {
-      return user.email === email && user.password === pswd;
-    });
+    // const data = JSON.parse(localStorage.getItem("data")) || [];
+    // console.log(data, "rtyuiop");
+    console.log(email, pswd, "email,password");
+    // const logindetails = data.find((user) => {
+    //   return user.email === email && user.password === pswd;
+    // });
 
     console.log(logindetails, "login");
+    console.log(logindetails.userName,'11111111111111')
+    // console.log(userName, "userName")
+
     if (logindetails) {
+      setNewDetails(logindetails)
       // setSuccess(true);
       setTimeout(() => {
         navigate("/layout");

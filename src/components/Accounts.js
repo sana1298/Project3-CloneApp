@@ -7,10 +7,14 @@ import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 // import { Navigate } from "react-router-dom";
 
-export default function SimplePopper() {
-  const {  setLoggedIn } =useForm(UserContext);
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
+export default function SimplePopper() {
+  const {  setLoggedIn,
+    // newDetails,defalutPost 
+  } =useForm(UserContext);
+  // console.log(defalutPost,newDetails,"postss")
+  const [anchorEl, setAnchorEl] = React.useState(null);
+// console.log(logindetails,"login accounyt")
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -22,6 +26,7 @@ export default function SimplePopper() {
     localStorage.setItem("LoggedIn", false);
     setLoggedIn(false);
   };
+  // console.log(logindetails,'00000000000000000')
   // if (!loggedIn) {
   //   return <Navigate to="/" />;
   // }
@@ -48,7 +53,8 @@ export default function SimplePopper() {
         variant="contained"
         onClick={handleLogout}
       >
-       Log out @Sanofer
+       Log out @
+       {/* {newDetails.userName} */}
        </Box>
       </Typography>
          

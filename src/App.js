@@ -19,7 +19,7 @@ function App() {
       <Box>
         <Router>
           <Routes>
-            <Route path="/" element={<LoginForm />} />
+            <Route path="/" element={<LoginForm  />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/layout" element={<Protect />}>
               {/* </Route> */}

@@ -50,7 +50,6 @@ const RegisterForm = () => {
   });
   const navigate = useNavigate();
   const [errorType, setErrorType] = useState("");
-
   const handleClick = (e) => {
     e.preventDefault();
     if (email === "" && pswd === "" && userName === "") {
