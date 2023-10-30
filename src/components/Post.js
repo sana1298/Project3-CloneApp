@@ -24,18 +24,22 @@ import UserContext from "../context/UserContext";
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
 
-  const { postContent, setPostContent, posts, setPosts } = useForm(UserContext);
+  const { postContent, setPostContent,newDetails,selectedImage,setPostDetails, postDetails,profilePost,setProfilePost } = useForm(UserContext);
 
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
   };
 
   const handlePost = () => {
-    setPosts([...posts, postContent]);
-    setPostContent("");
-    console.log("Posted content: " + postContent);
-    console.log("Post content: " + posts);
-  };
+    const newPostContent ={
+      name:newDetails.userName,
+      content:postContent,
+      image:selectedImage,
+    }
+    setPostDetails([newPostContent,...postDetails])
+    setProfilePost([...profilePost,newPostContent])
+    
+  }
 
   const handleClickOpen = () => {
     setOpen(true);

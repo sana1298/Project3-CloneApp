@@ -32,7 +32,7 @@ const alertMsg = {
 };
 
 const LoginForm = () => {
-  const {email,setEmail,pswd,setPswd,logindetails,setNewDetails,userName  } =useForm(UserContext);
+  const {email,setEmail,pswd,setPswd,logindetails,setNewDetails  } =useForm(UserContext);
 
   // const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const LoginForm = () => {
     // });
 
     console.log(logindetails, "login");
-    console.log(logindetails.userName,'11111111111111')
+    // console.log(logindetails.userName,'11111111111111')
     // console.log(userName, "userName")
 
     if (logindetails) {

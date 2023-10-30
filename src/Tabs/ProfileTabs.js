@@ -63,25 +63,7 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
        <PostDisplay/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
-       <Typography>asdfgh</Typography><br/>
+       
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two

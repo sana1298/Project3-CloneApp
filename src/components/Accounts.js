@@ -10,7 +10,8 @@ import UserContext from "../context/UserContext";
 
 export default function SimplePopper() {
   const {  setLoggedIn,
-    // newDetails,defalutPost 
+    newDetails,
+    // defalutPost 
   } =useForm(UserContext);
   // console.log(defalutPost,newDetails,"postss")
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,8 +54,7 @@ export default function SimplePopper() {
         variant="contained"
         onClick={handleLogout}
       >
-       Log out @
-       {/* {newDetails.userName} */}
+       Log out @{newDetails.userName}
        </Box>
       </Typography>
          

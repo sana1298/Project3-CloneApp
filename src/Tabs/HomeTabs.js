@@ -55,26 +55,35 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const { postContent, setPostContent, posts, setPosts } =useForm(UserContext);
+  const { postContent, setPostContent,newDetails,selectedImage,setSelectedImage,setPostDetails, postDetails,profilePost,setProfilePost} =useForm(UserContext);
   
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
   };
 
   const handlePost = () => {
-    setPosts([...posts, postContent]);
-    setPostContent("");
-    console.log("Posted content: " + postContent);
-    console.log("Post content: " + posts);
+    const newPostContent ={
+      name:newDetails.userName,
+      content:postContent,
+      image:selectedImage,
+      id:postDetails.length+1,
+      liked:0,
+    }
+    setPostDetails([newPostContent,...postDetails])
+    setProfilePost([...profilePost,newPostContent])
+    // setPostContent(" ")
+
+    console.log(postDetails)
+  
   };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // const handleImageSelect = (event) => {
-  //   const file = event.target.files[0];
-  //   setSelectedImage(file);
-  // };
+  const handleImageSelect = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(URL.createObjectURL(file));
+  };
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -108,7 +117,7 @@ export default function BasicTabs() {
             <TextField
               placeholder="What is happening?!"
               sx={{ border: "none",ml:2,width:500 }}
-              value={postContent} // Bind the value to the state
+              value={postContent} 
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
@@ -125,9 +134,12 @@ export default function BasicTabs() {
                 >
                   <Tooltip title="Media">
                     <Link href="#">
-                      <CollectionsOutlinedIcon sx={{ mt: 1 }}>
+                      {/* <CollectionsOutlinedIcon sx={{ mt: 1 }} onClick={handleImageSelect}>
                         <VisuallyHiddenInput type="file" />
-                      </CollectionsOutlinedIcon>
+                      </CollectionsOutlinedIcon> */}
+                      <Button component="label"  startIcon={<CollectionsOutlinedIcon />} onClick={handleImageSelect}>
+      <VisuallyHiddenInput type="file" />
+    </Button>
                     </Link>
                   </Tooltip>
                 </IconButton>
@@ -227,7 +239,7 @@ export default function BasicTabs() {
             <TextField
               placeholder="What is happening?!"
               sx={{ border: "none" }}
-              value={postContent} // Bind the value to the state
+              value={postContent} 
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
