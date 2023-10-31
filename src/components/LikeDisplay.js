@@ -1,57 +1,28 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  Paper,
-  Tooltip,
-  Typography,
-} from "@mui/material";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
-// import AvatarImg from "./AvatarImg";
-// import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { Box, Card, CardMedia, Tooltip, Typography } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
-// import Tooltip from "@mui/material/Tooltip";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import Avatar from "@mui/material/Avatar";
-// import Stack from "@mui/material/Stack";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import Avatar from "./Avatar";
 
-const CreatePost = () => {
-  const {
-    posts,
-    // setPosts,
-    // defalutPost,
-    newDetails,
-    liked,
-    setLiked,
-    bookmark,
-    setBookmark,
-    deletePost,
-    postDetails,
-    // selectedImage
-  } = useForm(UserContext);
-  console.log("posts777", posts);
+const LikeDisplay = () => {
+  const { liked, setLiked, bookmark, setBookmark, deletePost } =
+    useForm(UserContext);
+
   const handleLikeClick = (item) => {
-    // setLiked(!liked);
-    //   if (!liked) {
-    //   setLiked(!liked);
-    // };
+    if (!liked) {
+      setLiked(!liked);
+    }
     if (liked.includes(item)) {
       setLiked(liked.filter((likedItem) => likedItem !== item));
     } else {
       setLiked([...liked, item]);
     }
+    console.log(liked, "777777777");
   };
-  console.log("9999999999", liked);
-
-  const handleDeletePost = (index) => {
-    deletePost(index);
-    console.log("Delete post", index);
-  };
-
   const handleBookmarkClick = (items) => {
     // setBookmark(!bookmark);
     if (bookmark.includes(items)) {
@@ -62,38 +33,25 @@ const CreatePost = () => {
       setBookmark([...bookmark, items]);
     }
   };
-  console.log("bookmark", bookmark);
+
 
   return (
-    <Box
-    //  sx={{ position: "absolute" }}
-    >
+    <Box>
       {/* {defalutPost.posts.map((userPost, index) => ( */}
-      {postDetails.map((userPost, index) => {
+      {liked.map((userPost, index) => {
         const Liked = liked.includes(userPost);
         const Bookmark = bookmark.includes(userPost);
+
         return (
-          <Card sx={{ mt: 3, borderRadius: 5, ml:1,width:630 }}>
+          <Card sx={{ mt: 5, borderRadius: 5, ml: 2 }}>
             <Box sx={{ display: "flex" }}>
-              <Box sx={{ ml: 2, mt: 1 }}>
-                <Avatar
-                  src={userPost.person}
-                  alt={newDetails.userName}
-                  sx={{ height: 60, width: 60 }}
-                />
+              <Box sx={{ ml: -9, mt: -1 }}>
+                <Avatar />
               </Box>
               <Box sx={{ ml: 2 }}>
-                <Box sx={{display:'flex'}}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {userPost.userName}
                   </Typography>
-                  <Tooltip title="Delete">
-                    <CloseOutlinedIcon
-                      sx={{ mt: 2, ml: 40, cursor: "pointer" }}
-                      onClick={() => handleDeletePost(index)}
-                    />
-                  </Tooltip>
-                </Box>
                 <Typography>{userPost.content}</Typography>
 
                 <Box>
@@ -114,13 +72,11 @@ const CreatePost = () => {
                     onClick={() => handleLikeClick(userPost)}
                   >
                     {Liked ? (
-                      <FavoriteOutlinedIcon
-                        sx={{ color: "red", cursor: "pointer" }}
-                      />
+                      <FavoriteOutlinedIcon sx={{ color: "red" }} />
                     ) : (
                       // <FavoriteBorderOutlinedIcon />
 
-                      <FavoriteBorderOutlinedIcon sx={{ cursor: "pointer" }} />
+                      <FavoriteBorderOutlinedIcon />
                       // <FavoriteOutlinedIcon sx={{ color: "red" }} />
                     )}
                   </Tooltip>
@@ -138,9 +94,7 @@ const CreatePost = () => {
                     {Bookmark ? (
                       <BookmarkOutlinedIcon />
                     ) : (
-                      // <BookmarkBorderOutlinedIcon />
                       <BookmarkBorderOutlinedIcon />
-                      // <BookmarkOutlinedIcon />
                     )}
                   </Tooltip>
                 </Box>
@@ -153,4 +107,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default LikeDisplay;

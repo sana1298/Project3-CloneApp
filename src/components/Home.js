@@ -9,7 +9,6 @@ import HomeTabs from "../Tabs/HomeTabs";
 // import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 // import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 // import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import CreatePost from "../components/CreatePost";
 
 
 
@@ -50,14 +49,23 @@ const Home = () => {
 
   return (
     <>
-      <Box sx={{ width: 670, ml: 20 }}>
+      <Box sx={{ width: 670, ml: 20,
+        // position:'relative' 
+        }}>
+        {/* <Box 
+        // sx={{position:'fixed',zIndex:1}}
+        >
         <Typography
           variant="h5"
           // sx={{backgroundColor:'lightblue'}}
         >
           Home
         </Typography>
+        </Box> */}
+        <Box>
         <HomeTabs />
+        </Box>
+       
          {/* <Box>
           <CreatePost/>
         </Box> */}

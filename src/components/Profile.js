@@ -21,10 +21,13 @@ const Profile = () => {
           sx={{ position: "fixed", bgcolor: "white", zIndex: 1, height: 55,width: 660,display:'flex' }}
         >
           <ArrowBackOutlinedIcon sx={{ml:2,mt:1}}/>
-          <Typography variant="" sx={{ backgroundColor: "lightblue",fontWeight:'bold',ml:3,mt:1 }}>
+          <Box>
+          <Typography variant="p" sx={{ backgroundColor: "lightblue",fontWeight:'bold',ml:2,mt:1 }}>
             {newDetails.userName}
-          </Typography><br/>
-          <Typography>{profilePost.length} posts</Typography>
+          </Typography>
+          <Typography sx={{ml:2}}>{profilePost.length} posts</Typography>
+          </Box>
+          
         </Box>
 
         <Box>

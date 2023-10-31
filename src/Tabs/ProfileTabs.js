@@ -4,13 +4,14 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useForm } from "../context/UserContext";
-import UserContext from "../context/UserContext";
+// import { useForm } from "../context/UserContext";
+// import UserContext from "../context/UserContext";
 import PostDisplay from '../components/PostDisplay';
+import LikeDisplay from '../components/LikeDisplay';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
-  const { defalutPost } =useForm(UserContext);
+  // const { defalutPost } =useForm(UserContext);
 
 
   return (
@@ -70,6 +71,12 @@ export default function BasicTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+        Item Three
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={4}>
+       <LikeDisplay/>
       </CustomTabPanel>
     </Box>
   );

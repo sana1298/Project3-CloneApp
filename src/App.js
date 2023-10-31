@@ -12,6 +12,7 @@ import Profile from "./components/Profile";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Protect from "./components/Protect";
+import BookmarkDisplay from "./components/BookmarkDisplay";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="lists" element={<Lists />} />
               <Route path="communities" element={<Communities />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="bookmark" element={<BookmarkDisplay />} />
             </Route>
           </Routes>
         </Router>

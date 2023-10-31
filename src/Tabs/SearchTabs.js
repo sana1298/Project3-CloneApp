@@ -4,6 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import MoreHappend from '../components/MoreHappend'
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,7 +62,152 @@ export default function BasicTabs() {
         Item One
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+      <Box
+        sx={{
+          // border: '1px solid gray',
+          // borderRadius: 4,
+          // width: 290,
+        }}
+      >
+        <Typography variant="h5" sx={{fontWeight: 'bold'}}>India trends</Typography>
+        <Box sx={{display:'flex',justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             1. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #NationalUnityDay
+            </Typography>
+            <Typography variant="p" >
+             27.9K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             2. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #SardarVallabhbhaiPatel
+            </Typography>
+            <Typography variant="p" >
+             33.8K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             3. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #iphones
+            </Typography>
+            <Typography variant="p" >
+             4,794K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             4. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #View of Reality
+            </Typography>
+            <Typography variant="p" >
+             41.4K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             5. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #Iron Man Of India 
+            </Typography>
+            <Typography variant="p" >
+             8,880 Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             6. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #Apple
+            </Typography>
+            <Typography variant="p" >
+             284K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             7. Trending 
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #PAKvsBAN
+            </Typography>
+            <Typography variant="p" >
+             21.5K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+        <Box sx={{display:'flex',mt:3,justifyContent:'space-between'}}>
+          
+          <Box>
+            <Typography variant="p" >
+             8. Trending
+            </Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+             #Opposition
+            </Typography>
+            <Typography variant="p" >
+             76.1K Posts
+            </Typography>
+          </Box>
+          <Box>
+            <MoreHappend />
+          </Box>
+        </Box>
+       
+      </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three

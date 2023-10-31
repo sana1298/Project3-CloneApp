@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 import { Box, Card, CardMedia, Tooltip, Typography } from "@mui/material";
@@ -22,19 +21,23 @@ const PostDisplay = () => {
    } = useForm(UserContext);
 
    const handleLikeClick = (item) => {
-    // setLiked(!liked);
-    // setLiked(!liked);
+   
     if (!liked) {
     setLiked(!liked);
   };
   if (liked.includes(item)) {
-    setLiked(liked.filter((likedItem)=>likedItem !==item))
+    setLiked(liked.filter((likedItem)=>likedItem !== item))
 }else{
   setLiked([...liked,item]);
 }
   };
-  const handleBookmarkClick = () => {
-    setBookmark(!bookmark);
+  const handleBookmarkClick = (items) => {
+    // setBookmark(!bookmark);
+    if (bookmark.includes(items)) {
+        setBookmark(bookmark.filter((bookmarkedItems)=>bookmarkedItems !==items))
+    }else{
+      setBookmark([...bookmark,items]);
+    }
   };
 
   const handleDeletePost = (index) => {
@@ -47,6 +50,7 @@ const PostDisplay = () => {
     {/* {defalutPost.posts.map((userPost, index) => ( */}
     {profilePost.map((userPost, index) =>{
       const Liked=liked.includes(userPost)
+      const Bookmark = bookmark.includes(userPost);
       return (
       <Card sx={{ mt: 5, borderRadius: 5, ml: 2 }}>
         <Box sx={{ display: "flex" }}>
@@ -54,15 +58,16 @@ const PostDisplay = () => {
             <Avatar />
           </Box>
           <Box sx={{ ml: 2 }}>
-            <Box>
+            <Box sx={{display:'flex'}}>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                 {userPost.userName}
               </Typography>
-              <Typography>{userPost.content}</Typography>
-            </Box>
-            <Tooltip title="Delete">
+              <Tooltip title="Delete">
         <CloseOutlinedIcon sx={{ mt: 2,ml:40,cursor:'pointer' }}  onClick={() => handleDeletePost(index)} />
       </Tooltip>
+              
+            </Box>
+            <Typography>{userPost.content}</Typography>
             <Box>
               <CardMedia
                 component="img"
@@ -98,7 +103,7 @@ const PostDisplay = () => {
                 onClick={handleBookmarkClick}
                 sx={{ ml: 55 }}
               >
-                {bookmark ? (
+                {Bookmark ? (
                   <BookmarkOutlinedIcon />
                 ) : (
                   <BookmarkBorderOutlinedIcon />

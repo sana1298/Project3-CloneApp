@@ -55,7 +55,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const { postContent, setPostContent,newDetails,selectedImage,setSelectedImage,setPostDetails, postDetails,profilePost,setProfilePost} =useForm(UserContext);
+  const { postContent, setPostContent,newDetails,selectedImage,setSelectedImage,setPostDetails, postDetails,profilePost,setProfilePost,} =useForm(UserContext);
   
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
@@ -63,14 +63,15 @@ export default function BasicTabs() {
 
   const handlePost = () => {
     const newPostContent ={
-      name:newDetails.userName,
+      person:newDetails.userName,
+      userName:newDetails.userName,
       content:postContent,
       image:selectedImage,
       id:postDetails.length+1,
       liked:0,
     }
     setPostDetails([newPostContent,...postDetails])
-    setProfilePost([...profilePost,newPostContent])
+    setProfilePost([newPostContent,...profilePost])
     // setPostContent(" ")
 
     console.log(postDetails)
@@ -98,11 +99,17 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: "100%" }}>
+      <Typography>Home</Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+      //     sx={{position:'fixed',
+      //   zIndex: 1,
+      //   mt:4
+      // }}
         >
           <Tab label=" For You" {...a11yProps(0)} sx={{ml:20}} />
           <Tab label="Following" {...a11yProps(1)} sx={{ml:20}} />
@@ -110,8 +117,12 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Box>
-          <Box sx={{ display: "flex"}}>
+        <Box 
+        // sx={{position:'fixed',zIndex:1,mt:10}}
+        >
+          <Box 
+          sx={{ display: "flex"}}
+          >
             <Box sx={{ml:-10,mt:-1}}><Avatar /></Box>
             
             <TextField
@@ -133,14 +144,14 @@ export default function BasicTabs() {
                   }}
                 >
                   <Tooltip title="Media">
-                    <Link href="#">
+                    {/* <Link href="#"> */}
                       {/* <CollectionsOutlinedIcon sx={{ mt: 1 }} onClick={handleImageSelect}>
                         <VisuallyHiddenInput type="file" />
                       </CollectionsOutlinedIcon> */}
                       <Button component="label"  startIcon={<CollectionsOutlinedIcon />} onClick={handleImageSelect}>
       <VisuallyHiddenInput type="file" />
     </Button>
-                    </Link>
+                    {/* </Link> */}
                   </Tooltip>
                 </IconButton>
               </Button>
@@ -219,7 +230,7 @@ export default function BasicTabs() {
             <Box sx={{ mt: 2 }}>
               <Button
                 variant="contained"
-                sx={{ borderRadius: 5, ml: 30 }}
+                sx={{ borderRadius: 5, ml: 27 }}
                 onClick={handlePost}
               >
                 Post
@@ -227,18 +238,20 @@ export default function BasicTabs() {
             </Box>
           </Box>
         </Box>
-        <Box>
+        <Box 
+        // sx={{position:'absolute'}}
+        >
           <CreatePost/>
         </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1} sx={{ ml: 2 }}>
         
-      <Box>
+      <Box sx={{position:'sticky',zIndex:1,mt:10}}>
           <Box sx={{ display: "flex" }}>
             <Avatar />
             <TextField
               placeholder="What is happening?!"
-              sx={{ border: "none" }}
+              sx={{ border: "none",ml:2,width:500 }}
               value={postContent} 
               onChange={handleTextFieldChange}
             ></TextField>

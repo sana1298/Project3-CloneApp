@@ -8,13 +8,22 @@ import IconButton from "@mui/material/IconButton";
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import Accordion from './Accordion';
+import MonitorOutlinedIcon from '@mui/icons-material/MonitorOutlined';
+import { Link } from "react-router-dom";
+
 
 export default function SimplePopper() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  // const navigate = useNavigate();
+
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
+// const handleBookmark=()=>{
+//   navigate("/bookmark");
+  
+// }
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
@@ -45,20 +54,27 @@ export default function SimplePopper() {
             border: "none",
           }}
         >
+          <Link to="bookmark">
+
           <Typography
             variant="h5"
             sx={{
               fontWeight: "bold",
+              color:'black',
+              textDecoration:'none',
               "&:hover": {
                 backgroundColor: "#f2f2f2",
                 height: 40,
                 p: 1,
+                
               },
             }}
+            // onClick={handleBookmark}
           >
             <BookmarkBorderOutlinedIcon/>
             Bookmarks
           </Typography>
+          </Link>
           <Typography
             variant="h5"
             sx={{
@@ -86,6 +102,7 @@ export default function SimplePopper() {
               },
             }}
           >
+            <MonitorOutlinedIcon/>
             Monetization
           </Typography>
           <hr />
