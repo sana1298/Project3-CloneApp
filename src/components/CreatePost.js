@@ -18,19 +18,21 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import Avatar from "@mui/material/Avatar";
 // import Stack from "@mui/material/Stack";
+import TimeAgo from './TimeAgo'
 
 const CreatePost = () => {
   const {
     posts,
-    // setPosts,
-    // defalutPost,
     newDetails,
     liked,
     setLiked,
     bookmark,
     setBookmark,
-    deletePost,
     postDetails,
+    setPostDetails,
+    setProfilePost,
+    profilePost,
+
     // selectedImage
   } = useForm(UserContext);
   console.log("posts777", posts);
@@ -47,9 +49,12 @@ const CreatePost = () => {
   };
   console.log("9999999999", liked);
 
-  const handleDeletePost = (index) => {
-    deletePost(index);
-    console.log("Delete post", index);
+  const handleDeletePost = (value) => {
+    const deletePost=postDetails.filter((post) => post.id !== value)
+    setPostDetails(deletePost);
+    const deletePost1=profilePost.filter((post) => post.id !== value)
+    setProfilePost(deletePost1);
+    console.log("Delete post", value);
   };
 
   const handleBookmarkClick = (items) => {
@@ -69,11 +74,11 @@ const CreatePost = () => {
     //  sx={{ position: "absolute" }}
     >
       {/* {defalutPost.posts.map((userPost, index) => ( */}
-      {postDetails.map((userPost, index) => {
+      {postDetails.map((userPost) => {
         const Liked = liked.includes(userPost);
         const Bookmark = bookmark.includes(userPost);
         return (
-          <Card sx={{ mt: 3, borderRadius: 5, ml:1,width:630 }}>
+          <Card sx={{ mt: 3, borderRadius: 5, ml:.5,width:650 }}>
             <Box sx={{ display: "flex" }}>
               <Box sx={{ ml: 2, mt: 1 }}>
                 <Avatar
@@ -87,14 +92,16 @@ const CreatePost = () => {
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {userPost.userName}
                   </Typography>
+                  <TimeAgo timestamp={userPost.date}/>
                   <Tooltip title="Delete">
                     <CloseOutlinedIcon
                       sx={{ mt: 2, ml: 40, cursor: "pointer" }}
-                      onClick={() => handleDeletePost(index)}
+                      onClick={() => handleDeletePost(userPost.id)}
                     />
                   </Tooltip>
                 </Box>
                 <Typography>{userPost.content}</Typography>
+                {/* <TimeAgo timestamp={userPost.date}/> */}
 
                 <Box>
                   <CardMedia

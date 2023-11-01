@@ -55,27 +55,37 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const { postContent, setPostContent,newDetails,selectedImage,setSelectedImage,setPostDetails, postDetails,profilePost,setProfilePost,} =useForm(UserContext);
-  
+  const {
+    postContent,
+    setPostContent,
+    newDetails,
+    selectedImage,
+    setSelectedImage,
+    setPostDetails,
+    postDetails,
+    profilePost,
+    setProfilePost,
+  } = useForm(UserContext);
+
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
   };
 
   const handlePost = () => {
-    const newPostContent ={
-      person:newDetails.userName,
-      userName:newDetails.userName,
-      content:postContent,
-      image:selectedImage,
-      id:postDetails.length+1,
-      liked:0,
-    }
-    setPostDetails([newPostContent,...postDetails])
-    setProfilePost([newPostContent,...profilePost])
+    const newPostContent = {
+      person: newDetails.userName,
+      userName: newDetails.userName,
+      content: postContent,
+      date: new Date().toISOString(),
+      image: selectedImage,
+      id: postDetails.length + 1,
+      liked: 0,
+    };
+    setPostDetails([newPostContent, ...postDetails]);
+    setProfilePost([newPostContent, ...profilePost]);
     // setPostContent(" ")
 
-    console.log(postDetails)
-  
+    console.log(postDetails);
   };
 
   const handleChange = (event, newValue) => {
@@ -84,7 +94,9 @@ export default function BasicTabs() {
   const handleImageSelect = (event) => {
     const file = event.target.files[0];
     setSelectedImage(URL.createObjectURL(file));
+    console.log(file,'file selected');
   };
+  console.log(selectedImage,'selected image')
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -99,36 +111,37 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Typography>Home</Typography>
+      <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+        Home
+      </Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
-      //     sx={{position:'fixed',
-      //   zIndex: 1,
-      //   mt:4
-      // }}
+          //     sx={{position:'fixed',
+          //   zIndex: 1,
+          //   mt:4
+          // }}
         >
-          <Tab label=" For You" {...a11yProps(0)} sx={{ml:20}} />
-          <Tab label="Following" {...a11yProps(1)} sx={{ml:20}} />
+          <Tab label=" For You" {...a11yProps(0)} sx={{ ml: 20 }} />
+          <Tab label="Following" {...a11yProps(1)} sx={{ ml: 20 }} />
           {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Box 
+        <Box
         // sx={{position:'fixed',zIndex:1,mt:10}}
         >
-          <Box 
-          sx={{ display: "flex"}}
-          >
-            <Box sx={{ml:-10,mt:-1}}><Avatar /></Box>
-            
+          <Box sx={{ display: "flex" }}>
+            <Box sx={{ ml: -10, mt: -1 }}>
+              <Avatar />
+            </Box>
+
             <TextField
               placeholder="What is happening?!"
-              sx={{ border: "none",ml:2,width:500 }}
-              value={postContent} 
+              sx={{ border: "none", ml: 2, width: 500 }}
+              value={postContent}
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
@@ -144,13 +157,17 @@ export default function BasicTabs() {
                   }}
                 >
                   <Tooltip title="Media">
-                    {/* <Link href="#"> */}
-                      {/* <CollectionsOutlinedIcon sx={{ mt: 1 }} onClick={handleImageSelect}>
-                        <VisuallyHiddenInput type="file" />
+                    {/* <Link href="#">
+                    <CollectionsOutlinedIcon sx={{ mt: 1 }} >
+                        <VisuallyHiddenInput type="file" onChange={handleImageSelect} />
                       </CollectionsOutlinedIcon> */}
-                      <Button component="label"  startIcon={<CollectionsOutlinedIcon />} onClick={handleImageSelect}>
-      <VisuallyHiddenInput type="file" />
-    </Button>
+                    <Button
+                      component="label"
+                      startIcon={<CollectionsOutlinedIcon />}
+                   
+                    >
+                      <VisuallyHiddenInput type="file" onChange={handleImageSelect} accept="image/*" />
+                    </Button>
                     {/* </Link> */}
                   </Tooltip>
                 </IconButton>
@@ -238,21 +255,20 @@ export default function BasicTabs() {
             </Box>
           </Box>
         </Box>
-        <Box 
+        <Box
         // sx={{position:'absolute'}}
         >
-          <CreatePost/>
+          <CreatePost />
         </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1} sx={{ ml: 2 }}>
-        
-      <Box sx={{position:'sticky',zIndex:1,mt:10}}>
+        <Box sx={{ position: "sticky", zIndex: 1, mt: 10 }}>
           <Box sx={{ display: "flex" }}>
             <Avatar />
             <TextField
               placeholder="What is happening?!"
-              sx={{ border: "none",ml:2,width:500 }}
-              value={postContent} 
+              sx={{ border: "none", ml: 2, width: 500 }}
+              value={postContent}
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
@@ -348,7 +364,7 @@ export default function BasicTabs() {
                 </Tooltip>
               </IconButton>
             </Box>
-            <Box sx={{ mt: 2, }}>
+            <Box sx={{ mt: 2 }}>
               <Button
                 variant="contained"
                 sx={{ borderRadius: 5, ml: 30 }}

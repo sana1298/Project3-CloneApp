@@ -12,6 +12,7 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 const Profile = () => {
   const {
     newDetails, 
+    // myPost
     profilePost
   } =useForm(UserContext);
   return (
@@ -22,7 +23,7 @@ const Profile = () => {
         >
           <ArrowBackOutlinedIcon sx={{ml:2,mt:1}}/>
           <Box>
-          <Typography variant="p" sx={{ backgroundColor: "lightblue",fontWeight:'bold',ml:2,mt:1 }}>
+          <Typography variant="p" sx={{ fontWeight:'bold',ml:2,mt:1 }}>
             {newDetails.userName}
           </Typography>
           <Typography sx={{ml:2}}>{profilePost.length} posts</Typography>
@@ -100,9 +101,8 @@ function stringAvatar(name) {
       height: 110,
       // position: 'absolute',
     },
-    children: `${name.split(" ")[0][0].toUpperCase()}${name
-      .split(" ")[1][0]
-      .toUpperCase()}`,
+    children: `${name.split(" ")[0][0].toUpperCase()}`,
+    // children: `${name.split(" ")[0][0].toUpperCase()}${name.split(" ")[1][0].toUpperCase()}`,
   };
 }
 

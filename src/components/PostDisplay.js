@@ -12,13 +12,18 @@ import Avatar from "./Avatar";
 const PostDisplay = () => {
 
   const { profilePost,
+    postDetails,
     liked,
     setLiked,
     bookmark,
     setBookmark,
-    deletePost,
-    
+    setProfilePost,
+    setPostDetails,
+    newDetails,
+    // myPost
    } = useForm(UserContext);
+
+   const myPost=postDetails.filter(mypost => mypost.userName === newDetails.userName)
 
    const handleLikeClick = (item) => {
    
@@ -40,15 +45,17 @@ const PostDisplay = () => {
     }
   };
 
-  const handleDeletePost = (index) => {
-    deletePost(index);
-    console.log("Delete post",index)
+  const handleDeletePost = (value) => {
+    const deletePost=postDetails.filter((post) => post.id !== value)
+    setPostDetails(deletePost);
+    const deletePost1=profilePost.filter((post) => post.id !== value)
+    setProfilePost(deletePost1);
   };
 
   return (
     <Box>
     {/* {defalutPost.posts.map((userPost, index) => ( */}
-    {profilePost.map((userPost, index) =>{
+    {myPost.map((userPost, index) =>{
       const Liked=liked.includes(userPost)
       const Bookmark = bookmark.includes(userPost);
       return (
@@ -63,7 +70,7 @@ const PostDisplay = () => {
                 {userPost.userName}
               </Typography>
               <Tooltip title="Delete">
-        <CloseOutlinedIcon sx={{ mt: 2,ml:40,cursor:'pointer' }}  onClick={() => handleDeletePost(index)} />
+        <CloseOutlinedIcon sx={{ mt: 2,ml:40,cursor:'pointer' }}  onClick={() => handleDeletePost(userPost.id)} />
       </Tooltip>
               
             </Box>
