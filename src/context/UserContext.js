@@ -240,6 +240,59 @@ const defalutPost = [
   },
 ];
 
+const follow=[
+  {
+    profile:'https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320,q_50/lsci/db/PICTURES/CMS/320500/320506.png',
+    userName:'Rashid Khan',
+    bio:'Cricket Player',
+  },
+  {
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN3c5h-3eaZRziJ8hzWgDaxpP0F4adysOHFg&usqp=CAU',
+    userName:'VijaySethupathi',
+    bio:'Actor',
+  },
+  {
+    profile:'',
+    userName:'Sony Music South',
+    bio:'Offical Twitter Page fpr Sony Music South(India)',
+  },
+  {
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqaomEYUTVSW8LuaOhqIOcHhGZgTBNbf47Zg&usqp=CAU',
+    userName:'Surya',
+    bio:'Actor',
+  },
+  {
+    profile:'',
+    userName:'Vijay Television',
+    bio:'Vijay Television is a leading Tamil language entertainment channel',
+  },
+  {
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgdlhde3n3sRRcl7I4ZZoHAC7jRWTx2YKleg&usqp=CAU',
+    userName:'Lokesh Kanagaraj',
+    bio:'Writer,Director',
+  },
+  {
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1b8OonICXqfATt-3Pw6NSDV_URrhvDI6XA&usqp=CAU',
+    userName:'Karthi',
+    bio:'Actor',
+  },
+  {
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6qh392hqVJToykJqSQD1s8DBujGPITzon1g&usqp=CAU',
+    userName:'Gauthamvasudevmenon',
+    bio:'Engineering films',
+  },
+  {
+    profile:'https://th-i.thgim.com/public/entertainment/movies/sahm8e/article66882333.ece/alternates/FREE_1200/5%20.jpg',
+    userName:'Hiphop Tamizha',
+    bio:'Official Twitter of Hiphop Tamizha, the pioneers of Indian Tamil Hiphop.',
+  },
+  {
+    profile:'',
+    userName:'DailyThanthi',
+    bio:'#DailyThanthi No.1 #Tamil News website.',
+  },
+]
+
 const UserProvider = ({ children }) => {
   //   const[toggle,setToggle]=useState(false);
   const [loggedIn, setLoggedIn] = useState(
@@ -299,6 +352,7 @@ const UserProvider = ({ children }) => {
         trending,
         sports,
         entertainment,
+        follow,
         // myPost,
       }}
     >

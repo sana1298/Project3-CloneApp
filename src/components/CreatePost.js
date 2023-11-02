@@ -2,7 +2,6 @@ import {
   Box,
   Card,
   CardMedia,
-  Paper,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -54,7 +53,7 @@ const CreatePost = () => {
     setPostDetails(deletePost);
     const deletePost1=profilePost.filter((post) => post.id !== value)
     setProfilePost(deletePost1);
-    console.log("Delete post", value);
+    // console.log("Delete post", value);
   };
 
   const handleBookmarkClick = (items) => {
@@ -67,7 +66,7 @@ const CreatePost = () => {
       setBookmark([...bookmark, items]);
     }
   };
-  console.log("bookmark", bookmark);
+  // console.log("bookmark", bookmark);
 
   return (
     <Box
@@ -102,7 +101,8 @@ const CreatePost = () => {
                 </Box>
                 <Typography>{userPost.content}</Typography>
                 {/* <TimeAgo timestamp={userPost.date}/> */}
-
+               {userPost.image?(
+                <>
                 <Box>
                   <CardMedia
                     component="img"
@@ -112,12 +112,15 @@ const CreatePost = () => {
                       border: "1px solid black",
                     }}
                     src={userPost.image}
-                    alt="TwitterLogo"
+                    // alt="TwitterLogo"
                   />
                 </Box>
+                </>
+               ):null}
+                
                 <Box sx={{ mt: 2, display: "flex" }}>
                   <Tooltip
-                    title={liked ? "Unlike" : "Like"}
+                    title={Liked ? "Unlike" : "Like"}
                     onClick={() => handleLikeClick(userPost)}
                   >
                     {Liked ? (
@@ -138,7 +141,7 @@ const CreatePost = () => {
                   )}
 
                   <Tooltip
-                    title={bookmark ? "Remove from Bookmark" : "Bookmark"}
+                    title={Bookmark ? "Remove from Bookmark" : "Add to Bookmark"}
                     onClick={() => handleBookmarkClick(userPost)}
                     sx={{ ml: 55 }}
                   >

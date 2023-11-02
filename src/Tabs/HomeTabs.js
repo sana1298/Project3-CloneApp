@@ -14,7 +14,7 @@ import SentimentSatisfiedOutlinedIcon from "@mui/icons-material/SentimentSatisfi
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import IconButton from "@mui/material/IconButton";
-import { Button, TextField } from "@mui/material";
+import { Button, CardMedia, TextField } from "@mui/material";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 import { styled } from "@mui/material/styles";
@@ -73,7 +73,7 @@ export default function BasicTabs() {
 
   const handlePost = () => {
     const newPostContent = {
-      person: newDetails.userName,
+      // person: newDetails.userName,
       userName: newDetails.userName,
       content: postContent,
       date: new Date().toISOString(),
@@ -83,20 +83,22 @@ export default function BasicTabs() {
     };
     setPostDetails([newPostContent, ...postDetails]);
     setProfilePost([newPostContent, ...profilePost]);
-    // setPostContent(" ")
+    setSelectedImage(null);
+    // setPostContent(null);
+    
 
-    console.log(postDetails);
+    // console.log(postDetails);
   };
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleImageSelect = (event) => {
     const file = event.target.files[0];
     setSelectedImage(URL.createObjectURL(file));
-    console.log(file,'file selected');
+    // console.log(file, "file selected");
   };
-  console.log(selectedImage,'selected image')
+  console.log(selectedImage, "selected image");
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
     clipPath: "inset(50%)",
@@ -145,33 +147,48 @@ export default function BasicTabs() {
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
+          {selectedImage?(
+            <>
+            <Box sx={{
+                      ml: 4
+                    }}>
+          <CardMedia
+            component="img"
+            sx={{ mt: 2 }}
+            image={selectedImage}
+            // alt="TwitterLogo"
+          />
+          </Box>
+            </>
+          ): null}
+          
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: "flex", mr: 8 }}>
-              <Button>
+              {/* <Button> */}
                 <IconButton
                   sx={{
                     "&:hover": {
                       backgroundColor: "#e6faff",
                       height: 40,
+                      width:40
                     },
                   }}
                 >
                   <Tooltip title="Media">
-                    {/* <Link href="#">
-                    <CollectionsOutlinedIcon sx={{ mt: 1 }} >
-                        <VisuallyHiddenInput type="file" onChange={handleImageSelect} />
-                      </CollectionsOutlinedIcon> */}
                     <Button
                       component="label"
-                      startIcon={<CollectionsOutlinedIcon />}
-                   
+                      startIcon={<CollectionsOutlinedIcon sx={{ml:1}}/>}
+                      sx={{width:10}}
                     >
-                      <VisuallyHiddenInput type="file" onChange={handleImageSelect} accept="image/*" />
+                      <VisuallyHiddenInput
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                      />
                     </Button>
-                    {/* </Link> */}
                   </Tooltip>
                 </IconButton>
-              </Button>
+              {/* </Button> */}
               <IconButton
                 sx={{
                   "&:hover": {
@@ -261,10 +278,12 @@ export default function BasicTabs() {
           <CreatePost />
         </Box>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={1} sx={{ ml: 2 }}>
-        <Box sx={{ position: "sticky", zIndex: 1, mt: 10 }}>
+      <CustomTabPanel value={value} index={1}>
+        {/* <Box sx={{ position: "sticky", zIndex: 1, }}> */}
           <Box sx={{ display: "flex" }}>
-            <Avatar />
+          <Box sx={{ ml: -10, mt: -1 }}>
+              <Avatar />
+            </Box>
             <TextField
               placeholder="What is happening?!"
               sx={{ border: "none", ml: 2, width: 500 }}
@@ -272,26 +291,44 @@ export default function BasicTabs() {
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
+          {selectedImage?(
+            <>
+            <Box sx={{
+                      ml: 4
+                    }}>
+          <CardMedia
+            component="img"
+            sx={{ mt: 2 }}
+            image={selectedImage}
+            // alt="TwitterLogo"
+          />
+          </Box>
+            </>
+          ): null}
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: "flex", mr: 8 }}>
-              <Button>
-                <IconButton
+            <IconButton
                   sx={{
                     "&:hover": {
                       backgroundColor: "#e6faff",
                       height: 40,
+                      width:40,
                     },
                   }}
                 >
                   <Tooltip title="Media">
-                    <Link href="#">
-                      <CollectionsOutlinedIcon sx={{ mt: 1 }}>
-                        <VisuallyHiddenInput type="file" />
-                      </CollectionsOutlinedIcon>
-                    </Link>
+                    <Button
+                      component="label"
+                      startIcon={<CollectionsOutlinedIcon sx={{ml:1}}/>}
+                    >
+                      <VisuallyHiddenInput
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                      />
+                    </Button>
                   </Tooltip>
                 </IconButton>
-              </Button>
               <IconButton
                 sx={{
                   "&:hover": {
@@ -374,7 +411,7 @@ export default function BasicTabs() {
               </Button>
             </Box>
           </Box>
-        </Box>
+        {/* </Box> */}
       </CustomTabPanel>
     </Box>
   );

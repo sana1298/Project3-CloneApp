@@ -11,6 +11,8 @@ import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import Avatar from "./Avatar";
+import TimeAgo from './TimeAgo'
+
 
 const BookmarkDisplay = () => {
   const { newDetails, liked, setLiked, bookmark, setBookmark } =
@@ -111,7 +113,7 @@ const BookmarkDisplay = () => {
                 const Liked = liked.includes(userPost);
                 const Bookmark = bookmark.includes(userPost);
                 return (
-                  <Card sx={{ mt: 5, borderRadius: 5, ml: 2 }}>
+                  <Card sx={{ mt: 5, borderRadius: 5, ml:.5,width:650 }}>
                     <Box sx={{ display: "flex" }}>
                       <Box sx={{ ml: -9, mt: -1 }}>
                         <Avatar />
@@ -120,6 +122,8 @@ const BookmarkDisplay = () => {
                         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                           {userPost.userName}
                         </Typography>
+                  <TimeAgo timestamp={userPost.date}/>
+
                         <Typography>{userPost.content}</Typography>
 
                         <Box>
@@ -136,7 +140,7 @@ const BookmarkDisplay = () => {
                         </Box>
                         <Box sx={{ mt: 2, display: "flex" }}>
                           <Tooltip
-                            title={liked ? "Unlike" : "Like"}
+                            title={Liked ? "Unlike" : "Like"}
                             onClick={() => handleLikeClick(userPost)}
                           >
                             {Liked ? (
@@ -152,9 +156,7 @@ const BookmarkDisplay = () => {
                           )}
 
                           <Tooltip
-                            title={
-                              bookmark ? "Remove from Bookmark" : "Bookmark"
-                            }
+                            title={Bookmark ? "Remove from Bookmark" : "Add to Bookmark"}
                             onClick={() => handleBookmarkClick(userPost)}
                             sx={{ ml: 55 }}
                           >

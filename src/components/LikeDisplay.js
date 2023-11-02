@@ -5,11 +5,13 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+// import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import Avatar from "./Avatar";
+import TimeAgo from './TimeAgo'
+
 
 const LikeDisplay = () => {
-  const { liked, setLiked, bookmark, setBookmark, deletePost } =
+  const { liked, setLiked, bookmark, setBookmark,} =
     useForm(UserContext);
 
   const handleLikeClick = (item) => {
@@ -24,7 +26,6 @@ const LikeDisplay = () => {
     console.log(liked, "777777777");
   };
   const handleBookmarkClick = (items) => {
-    // setBookmark(!bookmark);
     if (bookmark.includes(items)) {
       setBookmark(
         bookmark.filter((bookmarkedItems) => bookmarkedItems !== items)
@@ -43,7 +44,7 @@ const LikeDisplay = () => {
         const Bookmark = bookmark.includes(userPost);
 
         return (
-          <Card sx={{ mt: 5, borderRadius: 5, ml: 2 }}>
+          <Card sx={{ mt: 5, borderRadius: 5, ml:.5,width:650 }}>
             <Box sx={{ display: "flex" }}>
               <Box sx={{ ml: -9, mt: -1 }}>
                 <Avatar />
@@ -52,6 +53,8 @@ const LikeDisplay = () => {
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     {userPost.userName}
                   </Typography>
+                  <TimeAgo timestamp={userPost.date}/>
+
                 <Typography>{userPost.content}</Typography>
 
                 <Box>
@@ -68,7 +71,7 @@ const LikeDisplay = () => {
                 </Box>
                 <Box sx={{ mt: 2, display: "flex" }}>
                   <Tooltip
-                    title={liked ? "Unlike" : "Like"}
+                    title={Liked ? "Unlike" : "Like"}
                     onClick={() => handleLikeClick(userPost)}
                   >
                     {Liked ? (
@@ -87,7 +90,7 @@ const LikeDisplay = () => {
                   )}
 
                   <Tooltip
-                    title={bookmark ? "Remove from Bookmark" : "Bookmark"}
+                     title={Bookmark ? "Remove from Bookmark" : "Add to Bookmark"}
                     onClick={() => handleBookmarkClick(userPost)}
                     sx={{ ml: 55 }}
                   >

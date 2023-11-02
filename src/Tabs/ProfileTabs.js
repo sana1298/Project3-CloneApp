@@ -8,6 +8,9 @@ import Box from '@mui/material/Box';
 // import UserContext from "../context/UserContext";
 import PostDisplay from '../components/PostDisplay';
 import LikeDisplay from '../components/LikeDisplay';
+import MediaDisplay from '../components/MediaDisplay';
+import HighlightsDisplay from '../components/HighlightsDisplay';
+import FollowDisplay from '../components/FollowDisplay';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,16 +67,18 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
        <PostDisplay/>
+       <hr />
+       <FollowDisplay/>
        
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         Item Two
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <HighlightsDisplay/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        Item Three
+      <MediaDisplay />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={4}>
        <LikeDisplay/>

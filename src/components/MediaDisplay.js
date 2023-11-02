@@ -11,7 +11,7 @@ import TimeAgo from './TimeAgo'
 
 
 
-const PostDisplay = () => {
+const MediaDisplay = () => {
 
   const { profilePost,
     postDetails,
@@ -41,9 +41,7 @@ const PostDisplay = () => {
   const handleBookmarkClick = (items) => {
     // setBookmark(!bookmark);
     if (bookmark.includes(items)) {
-        setBookmark(
-          bookmark.filter((bookmarkedItems)=>bookmarkedItems !==items)
-        );
+        setBookmark(bookmark.filter((bookmarkedItems)=>bookmarkedItems !==items))
     }else{
       setBookmark([...bookmark,items]);
     }
@@ -59,7 +57,9 @@ const PostDisplay = () => {
   return (
     <Box>
     {/* {defalutPost.posts.map((userPost, index) => ( */}
-    {myPost.map((userPost, index) =>{
+    {myPost?(
+        <>
+         {myPost.map((userPost) =>{
       const Liked=liked.includes(userPost)
       const Bookmark = bookmark.includes(userPost);
       return (
@@ -74,7 +74,6 @@ const PostDisplay = () => {
                 {userPost.userName}
               </Typography>
               <TimeAgo timestamp={userPost.date}/>
-
               <Tooltip title="Delete">
         <CloseOutlinedIcon sx={{ mt: 2,ml:40,cursor:'pointer' }}  onClick={() => handleDeletePost(userPost.id)} />
       </Tooltip>
@@ -113,14 +112,13 @@ const PostDisplay = () => {
 
               <Tooltip
                 title={Bookmark ? "Remove from Bookmark" : "Add to Bookmark"}
-                onClick={()=>handleBookmarkClick(userPost)}
+                onClick={handleBookmarkClick}
                 sx={{ ml: 55 }}
               >
                 {Bookmark ? (
                   <BookmarkOutlinedIcon />
                 ) : (
                   <BookmarkBorderOutlinedIcon />
-
                 )}
               </Tooltip>
             
@@ -129,8 +127,18 @@ const PostDisplay = () => {
         </Box>
       </Card>
     )})}
+    </>
+    ):(
+        <>
+        <Box sx={{width:380,height:100,ml:20,mt:5}}>
+            <Typography variant="h4" sx={{fontWeight:'bold'}}>Lights,camera...attachments!</Typography>
+              <Typography>When you post photos or videos, they will show up here.</Typography>
+            </Box>
+        </>
+    )}
+   
   </Box>
   );
 };
 
-export default PostDisplay;
+export default MediaDisplay;

@@ -20,26 +20,46 @@ import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import IconButton from "@mui/material/IconButton";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
+import { styled } from "@mui/material/styles";
+
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
 
-  const { postContent, setPostContent,newDetails,selectedImage,setPostDetails, postDetails,profilePost,setProfilePost } = useForm(UserContext);
+  const { postContent, setPostContent,newDetails,selectedImage,setPostDetails, postDetails,profilePost,setProfilePost,setSelectedImage } = useForm(UserContext);
 
   const handleTextFieldChange = (event) => {
     setPostContent(event.target.value);
   };
 
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
+
   const handlePost = () => {
     const newPostContent ={
-      name:newDetails.userName,
+      // person: newDetails.userName,
+      userName:newDetails.userName,
       content:postContent,
       image:selectedImage,
     }
     setPostDetails([newPostContent,...postDetails])
     setProfilePost([...profilePost,newPostContent])
-    
+    setSelectedImage(null)
   }
+  const handleImageSelect = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(URL.createObjectURL(file));
+    console.log(file, "file selected");
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -66,9 +86,6 @@ export default function AlertDialog() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        {/* <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle> */}
         <DialogActions>
           <Box sx={{ display: "flex" }}>
             <Button onClick={handleClose}>
@@ -90,6 +107,18 @@ export default function AlertDialog() {
                 placeholder="What is happening?!"
                 onChange={handleTextFieldChange}
               ></TextField>
+              {selectedImage?(
+            <>
+            <Box >
+          <CardMedia
+            component="img"
+            sx={{ mt: 2 }}
+            image={selectedImage}
+            // alt="TwitterLogo"
+          />
+          </Box>
+            </>
+          ): null}
             </DialogContentText>
           </Box>
         </DialogContent>
@@ -100,21 +129,29 @@ export default function AlertDialog() {
         <DialogActions>
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: "flex", mr: 8 }}>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                {" "}
-                <Tooltip title="Media">
-                  <Link href="#">
-                    <CollectionsOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
+            <IconButton
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#e6faff",
+                      height: 40,
+                      width:40,
+                    },
+                  }}
+                >
+                  <Tooltip title="Media">
+                    <Button
+                      component="label"
+                      startIcon={<CollectionsOutlinedIcon sx={{ml:1}}/>}
+                      sx={{cursor: "pointer"}}
+                    >
+                      <VisuallyHiddenInput
+                        type="file"
+                        onChange={handleImageSelect}
+                        accept="image/*"
+                      />
+                    </Button>
+                  </Tooltip>
+                </IconButton>
               <IconButton
                 sx={{
                   "&:hover": {
