@@ -1,34 +1,26 @@
 import { Avatar, Box, Button, Card, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 
-const FollowDisplay = () => {
+const FollowingDisplay = () => {
   const { 
-        follow ,
-        // setFollow,
-        // isFollowing,
+        // follow ,
         following,
         setFollowing,
         } = useForm(UserContext);
 
-  // const[data,setData]=useState(false)
-
-  const handleFollow = (followValue) => {
-    // if(followValue){
-    //   setData(!data)
-    // }
-    
-    if (following.includes(followValue)) {
-      setFollowing(following.filter((user) => user !== followValue));
-    } else {
-      setFollowing([...following, followValue]);
-    }
-  };
+        const handleFollow = (followValue) => {
+          if (following.includes(followValue)) {
+            setFollowing(following.filter((user) => user !== followValue));
+          } else {
+            setFollowing([...following, followValue]);
+          }
+        };
   return (
     <>
       <Box>
-        {follow.map((followPost) => {
+        {following.map((followPost) => {
           const Follow=following.includes(followPost);
           return (
             <Card sx={{ mt: 1, borderRadius: 5, width: 650,p:1 }}>
@@ -66,7 +58,7 @@ const FollowDisplay = () => {
                 {Follow?'Unfollow':'Follow'}
               </Button>
               </Box>
-             
+              
             </Card>
           );
         })}
@@ -75,4 +67,4 @@ const FollowDisplay = () => {
   );
 };
 
-export default FollowDisplay;
+export default FollowingDisplay;

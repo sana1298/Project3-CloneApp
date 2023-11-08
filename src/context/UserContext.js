@@ -240,7 +240,7 @@ const defalutPost = [
   },
 ];
 
-const follow=[
+const followProfile=[
   {
     profile:'https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320,q_50/lsci/db/PICTURES/CMS/320500/320506.png',
     userName:'Rashid Khan',
@@ -252,7 +252,7 @@ const follow=[
     bio:'Actor',
   },
   {
-    profile:'',
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4y3azK65t_Gi9i2XJvTQUkGABpJ4zSpwuIA&usqp=CAU',
     userName:'Sony Music South',
     bio:'Offical Twitter Page fpr Sony Music South(India)',
   },
@@ -262,7 +262,7 @@ const follow=[
     bio:'Actor',
   },
   {
-    profile:'',
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5BB8ZkQLEf37MuQfat8T0lItuzI44eGU0jQ&usqp=CAU',
     userName:'Vijay Television',
     bio:'Vijay Television is a leading Tamil language entertainment channel',
   },
@@ -287,14 +287,14 @@ const follow=[
     bio:'Official Twitter of Hiphop Tamizha, the pioneers of Indian Tamil Hiphop.',
   },
   {
-    profile:'',
-    userName:'DailyThanthi',
-    bio:'#DailyThanthi No.1 #Tamil News website.',
+    profile:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJowLDWfr--R6aaBdYRe-9qIlwFfSv_i5hvA&usqp=CAU',
+    userName:'Sai Pallavi',
+    bio:'Doctor, Actor',
   },
 ]
 
 const UserProvider = ({ children }) => {
-  //   const[toggle,setToggle]=useState(false);
+    // const [isFollowing,setIsFollowing]=useState(false)
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem("LoggedIn") === "true"
   );
@@ -310,7 +310,9 @@ const UserProvider = ({ children }) => {
   const [newDetails, setNewDetails] = useState();
   const [postDetails, setPostDetails] = useState(defalutPost);
   const [profilePost,setProfilePost] = useState([]);
-  
+  const [following, setFollowing] = useState([]);
+  const [follow, setFollow] = useState(followProfile);
+  console.log(follow,"1111111111")
   // const myPost=postDetails.filter(mypost => mypost.userName === newDetails.userName)
 
   
@@ -352,7 +354,12 @@ const UserProvider = ({ children }) => {
         trending,
         sports,
         entertainment,
+        following,
+        setFollowing,
         follow,
+        setFollow,
+        // isFollowing,
+        // setIsFollowing,
         // myPost,
       }}
     >

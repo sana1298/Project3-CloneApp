@@ -19,7 +19,7 @@ const Profile = () => {
     <>
       <Box sx={{ width: 660, ml: 20,position:'relative', }}>
         <Box
-          sx={{ position: "fixed", bgcolor: "white", zIndex: 1, height: 55,width: 660,display:'flex' }}
+          sx={{ position: "fixed", bgcolor: "white", zIndex: 1, height: 55,width: 695,display:'flex' }}
         >
           <ArrowBackOutlinedIcon sx={{ml:2,mt:1}}/>
           <Box>

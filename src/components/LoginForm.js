@@ -32,7 +32,7 @@ const alertMsg = {
 };
 
 const LoginForm = () => {
-  const {email,setEmail,pswd,setPswd,logindetails,setNewDetails  } =useForm(UserContext);
+  const {email,setEmail,pswd,setPswd,logindetails,setNewDetails, } =useForm(UserContext);
 
   // const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ const LoginForm = () => {
       // setError(true);
       setErrorType("error");
     }
-    if (email === "" && pswd === "") {
+    if ((email === "") && pswd === "") {
       // setErrors(true)
       setErrorType(alertMsg.empty.key);
     } else {

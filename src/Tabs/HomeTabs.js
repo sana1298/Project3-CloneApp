@@ -19,6 +19,7 @@ import { useForm } from "../context/UserContext";
 import UserContext from "../context/UserContext";
 import { styled } from "@mui/material/styles";
 import CreatePost from "../components/CreatePost";
+import FollowingDisplay from "../components/FollowingDisply";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -85,11 +86,10 @@ export default function BasicTabs() {
     setProfilePost([newPostContent, ...profilePost]);
     setSelectedImage(null);
     // setPostContent(null);
-    
 
     // console.log(postDetails);
   };
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -147,47 +147,49 @@ export default function BasicTabs() {
               onChange={handleTextFieldChange}
             ></TextField>
           </Box>
-          {selectedImage?(
+          {selectedImage ? (
             <>
-            <Box sx={{
-                      ml: 4
-                    }}>
-          <CardMedia
-            component="img"
-            sx={{ mt: 2 }}
-            image={selectedImage}
-            // alt="TwitterLogo"
-          />
-          </Box>
+              <Box
+                sx={{
+                  ml: 4,
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  sx={{ mt: 2 }}
+                  image={selectedImage}
+                  // alt="TwitterLogo"
+                />
+              </Box>
             </>
-          ): null}
-          
+          ) : null}
+
           <Box sx={{ display: "flex" }}>
             <Box sx={{ display: "flex", mr: 8 }}>
               {/* <Button> */}
-                <IconButton
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "#e6faff",
-                      height: 40,
-                      width:40
-                    },
-                  }}
-                >
-                  <Tooltip title="Media">
-                    <Button
-                      component="label"
-                      startIcon={<CollectionsOutlinedIcon sx={{ml:1}}/>}
-                      sx={{width:10}}
-                    >
-                      <VisuallyHiddenInput
-                        type="file"
-                        onChange={handleImageSelect}
-                        accept="image/*"
-                      />
-                    </Button>
-                  </Tooltip>
-                </IconButton>
+              <IconButton
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "#e6faff",
+                    height: 40,
+                    width: 40,
+                  },
+                }}
+              >
+                <Tooltip title="Media">
+                  <Button
+                    component="label"
+                    startIcon={<CollectionsOutlinedIcon sx={{ ml: 1 }} />}
+                    sx={{ width: 10 }}
+                  >
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={handleImageSelect}
+                      accept="image/*"
+                    />
+                  </Button>
+                </Tooltip>
+              </IconButton>
               {/* </Button> */}
               <IconButton
                 sx={{
@@ -280,137 +282,142 @@ export default function BasicTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         {/* <Box sx={{ position: "sticky", zIndex: 1, }}> */}
-          <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex" }}>
           <Box sx={{ ml: -10, mt: -1 }}>
-              <Avatar />
+            <Avatar />
+          </Box>
+          <TextField
+            placeholder="What is happening?!"
+            sx={{ border: "none", ml: 2, width: 500 }}
+            value={postContent}
+            onChange={handleTextFieldChange}
+          ></TextField>
+        </Box>
+        {selectedImage ? (
+          <>
+            <Box
+              sx={{
+                ml: 4,
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ mt: 2 }}
+                image={selectedImage}
+                // alt="TwitterLogo"
+              />
             </Box>
-            <TextField
-              placeholder="What is happening?!"
-              sx={{ border: "none", ml: 2, width: 500 }}
-              value={postContent}
-              onChange={handleTextFieldChange}
-            ></TextField>
-          </Box>
-          {selectedImage?(
-            <>
-            <Box sx={{
-                      ml: 4
-                    }}>
-          <CardMedia
-            component="img"
-            sx={{ mt: 2 }}
-            image={selectedImage}
-            // alt="TwitterLogo"
-          />
-          </Box>
-            </>
-          ): null}
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ display: "flex", mr: 8 }}>
+          </>
+        ) : null}
+        <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", mr: 8 }}>
             <IconButton
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "#e6faff",
-                      height: 40,
-                      width:40,
-                    },
-                  }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                  width: 40,
+                },
+              }}
+            >
+              <Tooltip title="Media">
+                <Button
+                  component="label"
+                  startIcon={<CollectionsOutlinedIcon sx={{ ml: 1 }} />}
                 >
-                  <Tooltip title="Media">
-                    <Button
-                      component="label"
-                      startIcon={<CollectionsOutlinedIcon sx={{ml:1}}/>}
-                    >
-                      <VisuallyHiddenInput
-                        type="file"
-                        onChange={handleImageSelect}
-                        accept="image/*"
-                      />
-                    </Button>
-                  </Tooltip>
-                </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                <Tooltip title="GIF">
-                  <Link href="#">
-                    <GifBoxOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                <Tooltip title="Poll">
-                  <Link href="#">
-                    <BallotOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                <Tooltip title="Emoji">
-                  {" "}
-                  <Link href="#">
-                    <SentimentSatisfiedOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                <Tooltip title="Schedule">
-                  <Link href="#">
-                    <DateRangeOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#e6faff",
-                    height: 40,
-                  },
-                }}
-              >
-                <Tooltip title="Location">
-                  <Link href="#">
-                    <RoomOutlinedIcon sx={{ mt: 1 }} />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-            </Box>
-            <Box sx={{ mt: 2 }}>
-              <Button
-                variant="contained"
-                sx={{ borderRadius: 5, ml: 30 }}
-                onClick={handlePost}
-              >
-                Post
-              </Button>
-            </Box>
+                  <VisuallyHiddenInput
+                    type="file"
+                    onChange={handleImageSelect}
+                    accept="image/*"
+                  />
+                </Button>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                },
+              }}
+            >
+              <Tooltip title="GIF">
+                <Link href="#">
+                  <GifBoxOutlinedIcon sx={{ mt: 1 }} />
+                </Link>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                },
+              }}
+            >
+              <Tooltip title="Poll">
+                <Link href="#">
+                  <BallotOutlinedIcon sx={{ mt: 1 }} />
+                </Link>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                },
+              }}
+            >
+              <Tooltip title="Emoji">
+                {" "}
+                <Link href="#">
+                  <SentimentSatisfiedOutlinedIcon sx={{ mt: 1 }} />
+                </Link>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                },
+              }}
+            >
+              <Tooltip title="Schedule">
+                <Link href="#">
+                  <DateRangeOutlinedIcon sx={{ mt: 1 }} />
+                </Link>
+              </Tooltip>
+            </IconButton>
+            <IconButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#e6faff",
+                  height: 40,
+                },
+              }}
+            >
+              <Tooltip title="Location">
+                <Link href="#">
+                  <RoomOutlinedIcon sx={{ mt: 1 }} />
+                </Link>
+              </Tooltip>
+            </IconButton>
           </Box>
+          <Box sx={{ mt: 2 }}>
+            <Button
+              variant="contained"
+              sx={{ borderRadius: 5, ml: 30 }}
+              onClick={handlePost}
+            >
+              Post
+            </Button>
+          </Box>
+        </Box>
+        <Box>
+        <FollowingDisplay />
+        </Box>
         {/* </Box> */}
       </CustomTabPanel>
     </Box>
